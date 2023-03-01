@@ -1,0 +1,1 @@
+python flights.py -r local testfile.txt > output.txt
