@@ -33,7 +33,11 @@ object SLab {
             "536367\t84879\tASSORTED COLOUR BIRD ORNAMENT\t32.0\t12/1/2010 8:34\t1.69\t13047\tUnited Kingdom"
           )
        sc.parallelize(mylist, 3)
-
+       // you can examine an rdd (say it is called mytestrdd) by doing the following:
+       // val localversion = mytestrdd.take(10)
+       // localversion.foreach{x=>println(x)} //if the rdd entires are not arrays or lists
+       // localversion.foreach{x => println(x.mkString("\t")) } // if the rdd entires are arrays (if x is an array).
+       //                             x.mkString("\t") converts x into a tab-separated string that makes it easier to print
     }
 
 }
