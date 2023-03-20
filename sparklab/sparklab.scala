@@ -3,12 +3,43 @@ import org.apache.spark.rdd.RDD
 
 object SLab {
 
-    def q1(sc:SparkContext) = {
+    def q1(sc: SparkContext) = {
+  	val retailRDD = sc.textFile("hdfs:///datasets/retailtab/")
+  	val header = retailRDD.first() // get header
+  	val retailData = retailRDD.filter(row => row != header) // remove header
 
+  	val invoiceRDD = retailData.map(row => {
+      	val fields = row.split("\t")
+      (fields(0), fields(3).toInt) // (invoiceno, quantity)
+    })
+    val count= salesdata.reduceByKey(_ + _) // (invoiceno, total quantity)
+    totalReturnedByCountry.saveAsTextFile("slab-q1")
     }
 
 
     def q2(sc:SparkContext) = {
+    val input = sc.textFile("/datasets/retailtab")
+    val header = input.first()
+    val data = input.filter(row => row != header)
+    
+    val salesData = data.map(line => {
+      val arr = line.split("\t")
+      val country = arr(7)
+      val quantity = arr(3).toInt
+      val unitPrice = arr(5).toDouble
+      val amount = quantity * unitPrice
+      
+      if (amount < 0) {
+        (country, 0.0)
+      } else {
+        (country, amount)
+      }
+    })
+    
+    val totReturned = salesData.reduceByKey(_ + _)
+    
+    totReturned.saveAsTextFile("slab-q2")
+}
 
 
     }
