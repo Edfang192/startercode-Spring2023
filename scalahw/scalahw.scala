@@ -6,6 +6,11 @@ object HW {
       //the types of the input parameters have been declared.
       //you must do the same for the output type (see scala slides)
       //do not use return statements.
+        var count = 0
+        if (x < y) count += 1
+        if (y < z) count += 1
+        if (x < z) count += 1
+        count
       -1
    }
 
