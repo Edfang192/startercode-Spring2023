@@ -25,7 +25,11 @@ object HW {
       //the types of the input parameters have been declared.
       //you must do the same for the output type (see scala slides)
       //do not use return statements.
-      0.0
+      arr.zipWithIndex.foldLeft(0) { (acc, pair) =>
+      val (elem, index) = pair
+      acc + elem * (index + 1)
+  }
+
    }
 
    def q4_application(x: Int, y: Int, z: Int)(f: (Int, Int) => Int) = {
