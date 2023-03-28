@@ -18,7 +18,7 @@ object HW {
       //the types of the input parameters have been declared.
       //you must do the same for the output type (see scala slides)
       //do not use return statements.
-      ""
+      "${if (age >= 21) "hello" else "howdy"}, ${name.toLowerCase}"
    }
 
    def q3_polynomial(arr: Seq[Double]) = {
