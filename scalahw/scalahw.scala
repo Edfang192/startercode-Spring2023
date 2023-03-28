@@ -36,7 +36,7 @@ object HW {
       //the types of the input parameters have been declared.
       //you must do the same for the output type (see scala slides)
       //do not use return statements.
-      1
+      f(f(x, y), z)
    }
 
    // create the rest of the functions yourself
