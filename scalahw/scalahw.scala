@@ -57,6 +57,19 @@ object HW {
          else count
       }
    }
+   def q9_neumaier(input: Seq[Double]): Double = {
+      case class Neumaier(sum: Double, comp: Double)
+
+      val res = input.foldLeft(Neumaier(0.0, 0.0)) { (state, x) =>
+         val t = state.sum + x
+         if (math.abs(state.sum) >= math.abs(x)) {
+            Neumaier(t, state.comp + (state.sum - t) + x)
+      } else {
+         Neumaier(t, state.comp + (x - t) + state.sum)
+      }
+  }
+  res.sum + res.comp
+}
    // create the rest of the functions yourself
    // in order for the code to compile, you need to (at the very least) create
    // blank versions of the remaining functions and have them return a value of 
